@@ -34,11 +34,12 @@ class NotificationListener : NotificationListenerService() {
         if (senderName != "Chat heads active"
             && (packageName == "com.facebook.katana" ||
                     packageName == "com.facebook.orca" || packageName == "com.whatsapp")
+            && !notificationText.isNullOrEmpty()
         ) {
             val message = Message(
                 sender = senderName ?: "",
-                message = notificationText ?: "",
-                packageName = packageName ?: "",
+                message = notificationText,
+                packageName = packageName,
                 timestamp = System.currentTimeMillis()
             )
 
